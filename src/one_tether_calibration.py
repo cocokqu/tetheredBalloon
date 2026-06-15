@@ -3,13 +3,15 @@ import pandas as pd
 g = 9.81  
 
 # Known calibration mass
-known_mass_g = 100  # change this if you used a different mass
+known_mass_g = 100  # change this for mass used
 known_force_N = (known_mass_g / 1000) * g
 
 
 # Read calibration files
-zero_df = pd.read_csv("tether1_zero_load.csv", names=["time_ms", "raw1"])
-loaded_df = pd.read_csv("tether1_100g.csv", names=["time_ms", "raw1"])
+weight = "10g"
+FILENAME = f"tether_{weight}.csv"
+zero_df = pd.read_csv("tether_0g.csv", names=["time_ms", "raw1"])
+loaded_df = pd.read_csv(FILENAME, names=["time_ms", "raw1"])
 
 # Get average raw readings
 raw_zero = zero_df["raw1"].mean()

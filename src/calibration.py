@@ -6,7 +6,9 @@ import pandas as pd
 offset = 84321.0
 scale = 0.0011160409
 
-df = pd.read_csv("tether_data.csv")
+
+FILENAME = ""
+df = pd.read_csv(f"{FILENAME}.csv")
 
 df["T1_N"] = (df["raw1"] - offset) * scale
 

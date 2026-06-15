@@ -2,13 +2,17 @@ import serial
 import csv
 import time
 
-PORT = "COM3"  # change this to your Arduino port
+# CHANGE THIS!!!!!
+# change this to your Arduino port
+PORT = "COM3"  
 BAUD = 115200
-#hello
+
+
 # Change this filename depending on your calibration condition
-FILENAME = "tether1_zero_load.csv"
+weight = "10g"
+FILENAME = f"tether_{weight}.csv"
 # Example names:
-# "tether1_zero_load.csv"
+# "tether1_0g.csv"
 # "tether1_100g.csv"
 # "tether1_200g.csv"
 
