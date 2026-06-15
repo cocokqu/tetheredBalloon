@@ -98,7 +98,7 @@ def tension_dataframe(df):
 
         time = row['time_ms']
 
-        vector_df.loc[len(vectir_df)] = [
+        vector_df.loc[len(vector_df)] = [
             time,
             T1_vec[0], T1_vec[1], T1_vec[2],
             T2_vec[0], T2_vec[1], T2_vec[2],
