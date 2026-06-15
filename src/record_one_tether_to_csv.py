@@ -4,7 +4,7 @@ import time
 
 PORT = "COM3"  # change this to your Arduino port
 BAUD = 115200
-
+#hello
 # Change this filename depending on your calibration condition
 FILENAME = "tether1_zero_load.csv"
 # Example names:
