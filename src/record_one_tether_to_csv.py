@@ -3,7 +3,8 @@ import csv
 import time
 
 # CHANGE THIS!!!!!
-# change this to your Arduino port
+# change this to your Arduino port 
+# open arduino, go to tools, and port
 PORT = "COM3"  
 BAUD = 115200
 
