@@ -1,3 +1,4 @@
+# HELLO COCO THIS IS A TEST
 import pandas as pd
 
 g = 9.81  # m/s^2
@@ -5,6 +6,7 @@ g = 9.81  # m/s^2
 # Known calibration mass
 known_mass_g = 100  # change this if you used a different mass
 known_force_N = (known_mass_g / 1000) * g
+#
 
 # Read calibration files
 zero_df = pd.read_csv("tether1_zero_load.csv", names=["time_ms", "raw1"])
