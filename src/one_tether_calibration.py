@@ -3,12 +3,12 @@ import pandas as pd
 g = 9.81  
 
 # Known calibration mass
-known_mass_g = 100  # change this for mass used
+known_mass_g = 15  # change this for mass used
 known_force_N = (known_mass_g / 1000) * g
 
 
 # Read calibration files
-weight = "10g"
+weight = "24g"
 FILENAME = f"tether_{weight}.csv"
 zero_df = pd.read_csv("tether_0g.csv", names=["time_ms", "raw1"])
 loaded_df = pd.read_csv(FILENAME, names=["time_ms", "raw1"])
