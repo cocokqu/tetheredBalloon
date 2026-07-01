@@ -1,6 +1,7 @@
 import serial
 import csv
 import time
+import datetime
 
 # CHANGE THIS!!!!!
 # change this to your Arduino port 
@@ -10,12 +11,24 @@ BAUD = 115200
 
 
 # Change this filename depending on your calibration condition
+<<<<<<< HEAD
 weight = "10g"
+=======
+<<<<<<< HEAD
+
+now = datetime.now()
+timestamp = datetime(now.year, now.month, now.day, now.hour, now.minute)
+tether = "tether1"
+FILENAME = f"{timestamp}_{tether}_data.csv"
+=======
+weight = "test1"
+>>>>>>> fdc6c7c8bbfd81e708f810f38af98a0e4fcbe6e1
 FILENAME = f"tether_{weight}.csv"
 # Example names:
 # "tether1_0g.csv"
 # "tether1_100g.csv"
 # "tether1_200g.csv"
+>>>>>>> 1a2f44317b4e35654e0e5f8755e41891317f8177
 
 ser = serial.Serial(PORT, BAUD, timeout=1)
 

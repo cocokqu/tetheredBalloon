@@ -7,7 +7,7 @@ from datetime import datetime
 
 # loading the file
 year = 2026
-month = 06
+month = 6
 day = 10
 hour = 11
 minute = 42
