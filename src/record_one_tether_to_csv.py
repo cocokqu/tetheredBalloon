@@ -3,25 +3,25 @@ import csv
 import time
 import datetime
 
-# CHANGE THIS!!!!!
-# change this to your Arduino port 
 # open arduino, go to tools, and port
+# change it to the arduino port
 PORT = "COM3"  
 BAUD = 115200
 
 
-# Change this filename depending on your calibration condition
+# Change this weight depending on cailbration 
 weight = "10g"
+# change this to angle that is being calibrated to
+angle = "0degrees"
 
 now = datetime.now()
 timestamp = datetime(now.year, now.month, now.day, now.hour, now.minute)
 tether = "tether1"
 weight = "test1"
-FILENAME = f"tether_{weight}.csv"
+FILENAME = f"tether_{weight},{angle},{timestamp}.csv"
 # Example names:
-# "tether1_0g.csv"
-# "tether1_100g.csv"
-# "tether1_200g.csv"
+# "tether1_0g,0degrees,2023-04-01 12:00.csv"
+
 
 ser = serial.Serial(PORT, BAUD, timeout=1)
 
