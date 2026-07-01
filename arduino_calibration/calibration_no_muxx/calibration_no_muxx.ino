@@ -1,77 +1,58 @@
 #include <Adafruit_NAU7802.h>
 #include <Wire.h>
 
-// // I2C address of TCA9548A multiplexer
-// const int TCA_ADDR = 0x70;
-
-// // TCA channel for the tether 
-// const int TETHER_CH = 0;
-
 // Create NAU7802 object
 Adafruit_NAU7802 tether;
 
-// Select one channel on the TCA9548A multiplexer
-
-// void tcaSelect(uint8_t channel) {
-//   Serial.print("Selecting TCA channel");
-//   Serial.println(channel);
-//   if (channel > 7) {
-//     Serial.println("invalid tca channel");
-//     return;
-//   } 
-
-//   Wire.beginTransmission(TCA_ADDR);
-//   Wire.write(1 << channel);
-//   byte error = Wire.endTransmission();
-//   // Wire.endTransmission();
-
-//   Serial.print("Tca endtransmission error code: ");
-//   Serial.println(error);
-// }
+// Averaging parameters
+const unsigned long AVERAGE_TIME_MS = 10000; // 10 seconds
 
 void setup() {
   Serial.begin(115200);
-  //why delay
   delay(1000);
 
-  // start I2C
+  // Start I2C
   Wire.begin();
-
-  // // Select the multiplexer channel for tether 1
-  // tcaSelect(TETHER_CH);
 
   // Start NAU7802
   if (!tether.begin()) {
-    Serial.println("Failed to find NAU7802 for tether");
+    Serial.println("Failed to find NAU7802");
     while (1);
   }
 
   Serial.println("Found NAU7802");
 
-  // // Optional but useful setup
+  // Optional configuration
   // tether.setLDO(NAU7802_3V0);
   // tether.setGain(NAU7802_GAIN_128);
   // tether.setRate(NAU7802_RATE_10SPS);
 
-  // Wait for sensor to settle
   delay(1000);
 
-  // Print CSV header
-  Serial.println("time_ms,raw1");
+  Serial.println("Averaging readings over 10 seconds...");
+  Serial.println("time_ms,average_raw");
 }
 
 void loop() {
-  tcaSelect(TETHER_CH);
+  long long sum = 0;          // Prevent overflow
+  uint32_t count = 0;
 
-  while (!tether.available()) {
-    delay(1);
+  unsigned long startTime = millis();
+
+  while (millis() - startTime < AVERAGE_TIME_MS) {
+
+    if (tether.available()) {
+      sum += tether.read();
+      count++;
+    }
   }
 
-  int32_t raw = tether.read();
+  float average = 0;
+  if (count > 0) {
+    average = (float)sum / count;
+  }
 
   Serial.print(millis());
   Serial.print(",");
-  Serial.println(raw);
-
-  delay(100);
+  Serial.println(average, 2);
 }
