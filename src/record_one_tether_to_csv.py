@@ -10,7 +10,7 @@ BAUD = 115200
 
 
 # Change this filename depending on your calibration condition
-weight = "test1"
+weight = "10g"
 FILENAME = f"tether_{weight}.csv"
 # Example names:
 # "tether1_0g.csv"
