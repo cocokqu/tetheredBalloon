@@ -20,7 +20,7 @@ tether = "tether1"
 weight = "test1"
 FILENAME = f"tether_{weight},{angle},{timestamp}.csv"
 # Example names:
-# "tether1_0g,0degrees,2023-04-01 12:00.csv"
+# "tether1_0g,0degrees,2023-04-01 12:00:00.csv"
 
 
 ser = serial.Serial(PORT, BAUD, timeout=1)
