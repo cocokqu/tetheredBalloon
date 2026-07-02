@@ -4,11 +4,11 @@ import time
 
 # CHANGE THIS
 # In Arduino IDE: Tools -> Port
-PORT = "COM3"
+PORT = "COM4"
 BAUD = 115200
 
 # Change this filename depending on your test/calibration condition
-test_name = "test1"
+test_name = "40%_with_net"
 FILENAME = f"four_tether_{test_name}.csv"
 
 
